@@ -1,38 +1,54 @@
-import logo from './logo.svg';
 import './App.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Login from './components/Login';
-import Homepage from './components/Homepage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Nav from './components/Navbar';
+import Signup from './components/Signup';
+import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import PrivateComponent from './components/PrivateComponent'
+import Login from './components/Login'
+import AddProduct from './components/AddProduct';
+import ProductList from './components/ProductList';
+import DocumentList from './components/DocumentList';
+import UpdateProduct from './components/UpdateProduct';
+import UploadDocument from './components/UploadDocument';
+import Example from './components/Example';
+import './';
+import  Sidebar  from './components/Sidebar';
 
-
-// return (
-//   <Router>
-//     <Routes>
-//       <Route path="/login" element={<LoginPage />} />
-//       <Route path="/homepage" element={<HomePage />} />
-//       {/* Other routes */}
-//     </Routes>
-//   </Router>
-// );
 function App() {
   return (
-    <Router>
-    <Routes>
-      <Route path="/Login" element={<Login/>} />
-      {/* <Route path="/homepage" element={<HomePage />} /> */}
-      {/* Other routes */}
-      <Route path="/Homepage" element={<Homepage/>} />
-    </Routes>
-  </Router>
-//<div className="blank">
+    <div className="App">
 
-//<Login/>
+ {/* hello bro */}
 
-//</div>
+ <BrowserRouter>
+        <Nav />
+        <Routes>
+          {/* PrivateComponent protects these routes */}
+          <Route
+            path="/"
+            element={<PrivateComponent />}>
+            {/* <Route path="/" element={<ProductList />} /> */}
+            <Route path="/" element={<DocumentList />} />
+          
+            <Route path="/upload" element={ <UploadDocument/>} />
+             
+            <Route path="/sidebar" element={ <Sidebar/>} />
+            <Route path="logout" element={<h1>Logout Component</h1>} />
+            <Route path="profile" element={<h1>Profile Component</h1>} />
+            <Route path="example" element={<Example/>} />
+          </Route>
+          {/* Public route accessible to all */}
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          
+        </Routes>
+      </BrowserRouter>
+     
+      {/* <Footer /> */}
+
+
+    </div>
   );
 }
 
 export default App;
-
