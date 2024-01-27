@@ -22,4 +22,4 @@
 /app/yarn-debug.log*
 /app/yarn-error.log*
 
-/server/.env
+/.env
