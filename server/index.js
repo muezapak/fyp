@@ -21,9 +21,11 @@ const path = require('path');
 //const flash=require('connect-flash')
 const flash = require('express-flash');
 const userRoutes = require('./routes/users');
- 
+ require("dotenv").config()
 
 let id=0;
+console.log(process.env.KeyId)
+console.log(process.env.AccessKey)
 
 
 // Initialize Express app
@@ -93,8 +95,8 @@ app.use((req, res, next) => {
 
   // AWS S3 configuration
   const s3 = new AWS.S3({
-    accessKeyId: 'AKIARSAXVK37346SEFJG',
-    secretAccessKey: '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',
+    accessKeyId: process.env.KeyId,
+    secretAccessKey: process.env.AccessKey
   });
 
 // Configure Passport local strategy to authenticate users using email
